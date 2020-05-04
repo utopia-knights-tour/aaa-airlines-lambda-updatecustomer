@@ -23,16 +23,4 @@ public class CreateCustomerTests {
 		logger = Mockito.mock(LambdaLogger.class);
 		Mockito.when(context.getLogger()).thenReturn(logger);
 	}
-
-	@Test
-	public void getAirportById() {
-		ApiGatewayRequest request = Mockito.mock(ApiGatewayRequest.class);
-		Customer customer = new Customer();
-		customer.setCustomerName("TestName");
-		customer.setCustomerAddress("TestAddress");
-		customer.setCustomerPhone("TestPhone");
-		Mockito.when(request.getBody()).thenReturn(new Gson().toJson(customer));
-		ApiGatewayProxyResponse response = new UpdateCustomer().handleRequest(request, context);
-		assertEquals(201, response.getStatusCode());
-	}
 }
